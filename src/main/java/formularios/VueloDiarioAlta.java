@@ -176,28 +176,34 @@ public class VueloDiarioAlta extends javax.swing.JFrame {
                 if (!Validacion.validarFecha(txtFecha.getText().toString())) {
                     compForm = false;
                     lblError.setText("Fecha no válida");
-                }
-                if (!Validacion.validarHora(txtHSalida.getText().toString())) {
-                    compForm = false;
-                    lblError.setText("Hora de salida no válida");
-                }
-                if (!Validacion.validarHora(txtHLlegada.getText().toString())) {
-                    compForm = false;
-                    lblError.setText("Hora de llegada no válida");
-                }
-                if (!Validacion.esNumero(txtNPlazasOcupadas.getText().toString())) {
-                    compForm = false;
-                    lblError.setText("El número de plazas ocupadas debe de ser un número");
                 } else {
-                    nPlazasOcupadas = Integer.parseInt(txtNPlazasOcupadas.getText().toString());
-                    if (!VueloDiario.validarNPlazasOcupadas(nPlazasOcupadas, txtCodigo.getText().toString())) {
+                    if (VueloDiario.existeVueloDiarioId(txtCodigo.getText(), txtFecha.getText(), null, null)) {
                         compForm = false;
-                        lblError.setText("El número de plazas ocupadas tiene que ser menor al número de plazas totales");
+                        lblError.setText("Este vuelo ya existe");
+                    } else {
+                        if (!Validacion.validarHora(txtHSalida.getText().toString())) {
+                            compForm = false;
+                            lblError.setText("Hora de salida no válida");
+                        }
+                        if (!Validacion.validarHora(txtHLlegada.getText().toString())) {
+                            compForm = false;
+                            lblError.setText("Hora de llegada no válida");
+                        }
+                        if (!Validacion.esNumero(txtNPlazasOcupadas.getText().toString())) {
+                            compForm = false;
+                            lblError.setText("El número de plazas ocupadas debe de ser un número");
+                        } else {
+                            nPlazasOcupadas = Integer.parseInt(txtNPlazasOcupadas.getText().toString());
+                            if (!VueloDiario.validarNPlazasOcupadas(nPlazasOcupadas, txtCodigo.getText().toString())) {
+                                compForm = false;
+                                lblError.setText("El número de plazas ocupadas tiene que ser menor al número de plazas totales");
+                            }
+                        }
+                        if (!Validacion.esNumero(txtPrecio.getText().toString()) && !Validacion.esDouble(txtPrecio.getText().toString())) {
+                            compForm = false;
+                            lblError.setText("El precio tiene que ser un número");
+                        }
                     }
-                }
-                if (!Validacion.esNumero(txtPrecio.getText().toString()) && !Validacion.esDouble(txtPrecio.getText().toString())) {
-                    compForm = false;
-                    lblError.setText("El precio tiene que ser un número");
                 }
             }
         }
@@ -218,7 +224,7 @@ public class VueloDiarioAlta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAltaActionPerformed
 
-    private void vaciarCampos(){
+    private void vaciarCampos() {
         txtCodigo.setText("");
         String fechaHoy = Validacion.parsearFechaAString(LocalDate.now());
         txtFecha.setText(fechaHoy);
@@ -227,7 +233,7 @@ public class VueloDiarioAlta extends javax.swing.JFrame {
         txtNPlazasOcupadas.setText("");
         txtPrecio.setText("");
     }
-    
+
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed

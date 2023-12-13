@@ -86,12 +86,12 @@ public class VueloDiario {
     public void setPrecioVuelo(double precioVuelo) {
         this.precioVuelo = precioVuelo;
     }
-    
-    public static boolean validarNPlazasOcupadas(int nPlazasOcupadas, String codigo){
+
+    public static boolean validarNPlazasOcupadas(int nPlazasOcupadas, String codigo) {
         Vuelo vuelo = Vuelo.leerPorCodigo(codigo);
-        if(nPlazasOcupadas > vuelo.getNPlazas() || nPlazasOcupadas < 0){
+        if (nPlazasOcupadas > vuelo.getNPlazas() || nPlazasOcupadas < 0) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
@@ -130,7 +130,7 @@ public class VueloDiario {
         }
         return vuelosDiarios;
     }
-    
+
     public void introducirVueloDiario() {
         String rutaArchivo = "src/main/java/archivos/vuelosDiarios.csv";
 
@@ -160,7 +160,7 @@ public class VueloDiario {
             e.printStackTrace();
         }
     }
-    
+
     public static List<String> leerLineas() {
         String archivoCSV = "src/main/java/archivos/vuelosDiarios.csv";
         List<String> lineas = new ArrayList<>();
@@ -179,7 +179,7 @@ public class VueloDiario {
 
         return lineas;
     }
-    
+
     public void eliminarVueloDiario() {
         String archivoCSV = "src/main/java/archivos/vuelosDiarios.csv";
         List<String> lineas = leerLineas();
@@ -190,7 +190,7 @@ public class VueloDiario {
                 String codigoActual = partes[0].trim();
                 String fechaActualSt = partes[1].trim();
                 LocalDate fechaActual = Validacion.parsearFecha(fechaActualSt);
-                
+
                 if (codigoActual.equals(vuelo) && fecha.equals(fechaActual)) {
                     lineas.remove(i);
                     break; // Terminar el bucle al encontrar la línea a eliminar
@@ -209,7 +209,7 @@ public class VueloDiario {
             e.printStackTrace();
         }
     }
-    
+
     public void editarVueloDiario(String codAnterior, String fechaSt) {
         String archivoCSV = "src/main/java/archivos/vuelosDiarios.csv";
         List<String> lineas = leerLineas();
@@ -222,7 +222,8 @@ public class VueloDiario {
                 String fechaActual = partes[1].trim();
 
                 if (codActual.equals(codAnterior) && fechaActual.equals(fechaSt)) {
-                    lineaEditada = vuelo + "," + fechaSt + "," + hSalida + ","
+                    String fechaParseada = Validacion.parsearFechaAString(fecha);
+                    lineaEditada = vuelo + "," + fechaParseada + "," + hSalida + ","
                             + hLlegada + "," + nPlazasOcupadas + "," + precioVuelo;
                     lineas.set(i, lineaEditada);
                     break; // Terminar el bucle al encontrar la línea a eliminar
@@ -240,6 +241,45 @@ public class VueloDiario {
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean existeVueloDiarioId(String codigo, String fecha, String codigoEditar, String fechaEditar) {
+        String archivoCSV = "src/main/java/archivos/vuelosDiarios.csv";
+        boolean primeraLinea = true;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+
+                if (primeraLinea) {
+                    primeraLinea = false;
+                    continue;
+                }
+                Scanner scanner = new Scanner(linea);
+                scanner.useDelimiter(",");
+                String codigoCsv = scanner.next();
+                String fechaCsv = scanner.next();
+                if (codigoEditar != null && fechaEditar != null) {
+                    if (codigo.equals(codigoEditar) && fecha.equals(fechaEditar)) {
+                        return false;
+                    } else {
+                        if (codigoCsv.equals(codigo) && fechaCsv.equals(fecha)) {
+                            return true;
+                        }
+                    }
+                } else {
+                    if (codigoCsv.equals(codigo) && fechaCsv.equals(fecha)) {
+                        return true;
+                    }
+                }
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
