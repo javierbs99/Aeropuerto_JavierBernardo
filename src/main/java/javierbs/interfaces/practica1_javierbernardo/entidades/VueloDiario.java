@@ -282,4 +282,42 @@ public class VueloDiario {
         return false;
     }
 
+    public static ArrayList<VueloDiario> leerVueloDiarioPorFecha(String fecha) {
+        ArrayList<VueloDiario> vuelosDiarios = new ArrayList<VueloDiario>();
+        String archivoCSV = "src/main/java/archivos/vuelosDiarios.csv";
+        boolean primeraLinea = true;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+
+                if (primeraLinea) {
+                    primeraLinea = false;
+                    continue;
+                }
+                Scanner scanner = new Scanner(linea);
+                scanner.useDelimiter(",");
+                String codigo = scanner.next();
+                String fechaSt = scanner.next();
+                if (fechaSt.equals(fecha)) {
+                    LocalDate fechaCsv = Validacion.parsearFecha(fechaSt);
+                    String hSalidaSt = scanner.next();
+                    LocalTime hSalida = Validacion.parsearHora(hSalidaSt);
+                    String hLlegadaSt = scanner.next();
+                    LocalTime hLlegada = Validacion.parsearHora(hLlegadaSt);
+                    int nPlazasOcupadas = scanner.nextInt();
+                    String precioSt = scanner.next();
+                    double precio = Double.parseDouble(precioSt);
+                    vuelosDiarios.add(new VueloDiario(codigo, fechaCsv, hSalida, hLlegada, nPlazasOcupadas, precio));
+                }
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return vuelosDiarios;
+    }
+
 }

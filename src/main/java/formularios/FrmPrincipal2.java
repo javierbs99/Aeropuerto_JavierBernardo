@@ -32,6 +32,11 @@ public class FrmPrincipal2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnSalidas.setText("Salidas");
+        btnSalidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalidasActionPerformed(evt);
+            }
+        });
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +72,14 @@ public class FrmPrincipal2 extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnSalidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidasActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmSalidas().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_btnSalidasActionPerformed
 
     /**
      * @param args the command line arguments
