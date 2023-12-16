@@ -359,5 +359,13 @@ public class VueloDiario {
         }
         return vuelosDiarios;
     }
+    
+    public static double calcularRecaudaciones(ArrayList<VueloDiario> vuelosDiarios){
+        double recaudacionTotal = 0;
+        for(VueloDiario vd: vuelosDiarios){
+            recaudacionTotal += vd.getPrecioVuelo() * vd.getnPlazasOcupadas();
+        }
+        return recaudacionTotal;
+    }
 
 }
