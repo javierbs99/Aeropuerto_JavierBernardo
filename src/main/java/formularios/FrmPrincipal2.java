@@ -28,6 +28,8 @@ public class FrmPrincipal2 extends javax.swing.JFrame {
 
         btnSalidas = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        btnLlegadas = new javax.swing.JButton();
+        btnVuelosCompania = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,6 +47,20 @@ public class FrmPrincipal2 extends javax.swing.JFrame {
             }
         });
 
+        btnLlegadas.setText("Llegadas");
+        btnLlegadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLlegadasActionPerformed(evt);
+            }
+        });
+
+        btnVuelosCompania.setText("Vuelos por compañía");
+        btnVuelosCompania.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVuelosCompaniaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -52,6 +68,8 @@ public class FrmPrincipal2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVuelosCompania, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLlegadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalidas, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -61,7 +79,11 @@ public class FrmPrincipal2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnSalidas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLlegadas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVuelosCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -81,13 +103,31 @@ public class FrmPrincipal2 extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_btnSalidasActionPerformed
 
+    private void btnLlegadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlegadasActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmLlegadas().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_btnLlegadasActionPerformed
+
+    private void btnVuelosCompaniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVuelosCompaniaActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmVuelosCompania().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_btnVuelosCompaniaActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLlegadas;
     private javax.swing.JButton btnSalidas;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JButton btnVuelosCompania;
     // End of variables declaration//GEN-END:variables
 }

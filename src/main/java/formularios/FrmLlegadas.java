@@ -8,23 +8,23 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import javierbs.interfaces.practica1_javierbernardo.entidades.Validacion;
 import javierbs.interfaces.practica1_javierbernardo.entidades.VueloDiario;
-import modelos.TablaSalidas;
+import modelos.TablaLlegadas;
 
 /**
  *
  * @author Usuario
  */
-public class FrmSalidas extends javax.swing.JFrame {
+public class FrmLlegadas extends javax.swing.JFrame {
 
-    TablaSalidas modelo = new TablaSalidas();
-    
-    public FrmSalidas() {
+    TablaLlegadas modelo = new TablaLlegadas();
+
+    public FrmLlegadas() {
         initComponents();
         inicializarFecha();
         visualizarTabla();
     }
-    
-    public void inicializarFecha(){
+
+    public void inicializarFecha() {
         LocalDate fechaLd = LocalDate.now();
         String fecha = Validacion.parsearFechaAString(fechaLd);
         txtFecha.setText(fecha);
@@ -39,16 +39,19 @@ public class FrmSalidas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtFecha = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblLlegadas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblSalidas = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tblLlegadas.setModel(modelo);
+        jScrollPane1.setViewportView(tblLlegadas);
 
         jLabel1.setText("Fecha:");
 
@@ -60,9 +63,6 @@ public class FrmSalidas extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-
-        tblSalidas.setModel(modelo);
-        jScrollPane1.setViewportView(tblSalidas);
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -76,49 +76,47 @@ public class FrmSalidas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)
-                        .addContainerGap(54, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnVolver))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(btnVolver)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVolver))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if(validarFecha(txtFecha.getText())){
+        if (validarFecha(txtFecha.getText())) {
             visualizarTabla();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -127,32 +125,35 @@ public class FrmSalidas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    public boolean validarFecha(String fecha){
+    public boolean validarFecha(String fecha) {
         lblError.setText("");
-        if(fecha.isBlank()){
+        if (fecha.isBlank()) {
             lblError.setText("Tiene que rellenar los campos");
             return false;
-        }else{
-            if(!Validacion.validarFecha(fecha)){
+        } else {
+            if (!Validacion.validarFecha(fecha)) {
                 lblError.setText("La fecha no es válida");
                 return false;
             }
         }
         return true;
     }
-    
-    public void visualizarTabla(){
+
+    public void visualizarTabla() {
         ArrayList<VueloDiario> vuelosDiarios = VueloDiario.leerVueloDiarioPorFecha(txtFecha.getText());
         modelo.setRowCount(vuelosDiarios.size());
         int fila = 0;
-        for(VueloDiario vd: vuelosDiarios){
-            tblSalidas.getModel().setValueAt(vd.getVuelo(), fila, 0);
-            tblSalidas.getModel().setValueAt(vd.gethSalida(), fila, 1);
-            tblSalidas.getModel().setValueAt(vd.getnPlazasOcupadas(), fila, 2);
-            tblSalidas.getModel().setValueAt(vd.getPrecioVuelo(), fila, 3);
+        for (VueloDiario vd : vuelosDiarios) {
+            tblLlegadas.getModel().setValueAt(vd.getVuelo(), fila, 0);
+            tblLlegadas.getModel().setValueAt(vd.gethLlegada(), fila, 1);
+            tblLlegadas.getModel().setValueAt(vd.getnPlazasOcupadas(), fila, 2);
+            tblLlegadas.getModel().setValueAt(vd.getPrecioVuelo(), fila, 3);
             fila++;
         }
     }
+    /**
+     * @param args the command line arguments
+     */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,7 +163,7 @@ public class FrmSalidas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblError;
-    private javax.swing.JTable tblSalidas;
+    private javax.swing.JTable tblLlegadas;
     private javax.swing.JTextField txtFecha;
     // End of variables declaration//GEN-END:variables
 }

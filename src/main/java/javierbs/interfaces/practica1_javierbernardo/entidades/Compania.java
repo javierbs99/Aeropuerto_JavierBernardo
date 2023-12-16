@@ -247,7 +247,6 @@ public class Compania {
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
 
-
             while ((linea = br.readLine()) != null) {
 
                 if (primeraLinea) {

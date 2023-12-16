@@ -23,9 +23,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnVuelosCompania" max="32767" attributes="0"/>
+                  <Component id="btnLlegadas" max="32767" attributes="0"/>
                   <Component id="btnSalidas" alignment="0" pref="388" max="32767" attributes="0"/>
                   <Component id="btnVolver" alignment="1" max="32767" attributes="0"/>
               </Group>
@@ -38,7 +40,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnSalidas" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="208" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnLlegadas" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnVuelosCompania" min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace pref="109" max="32767" attributes="0"/>
               <Component id="btnVolver" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -60,6 +66,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLlegadas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Llegadas"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLlegadasActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnVuelosCompania">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Vuelos por compa&#xf1;&#xed;a"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVuelosCompaniaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
